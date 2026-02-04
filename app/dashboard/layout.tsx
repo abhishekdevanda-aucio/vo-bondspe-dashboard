@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react"
-import { DashboardSidebar } from "@/components/dashboard/sidebar"
+import { DashboardSidebar, SidebarProvider } from "@/components/dashboard/sidebar"
 
 export default function DashboardLayout({
   children,
@@ -9,11 +9,14 @@ export default function DashboardLayout({
   children: React.ReactNode
 }) {
   return (
-    <div className="min-h-screen bg-background">
-      <DashboardSidebar />
-      <div className="pl-64 transition-all duration-300">
-        {children}
+    <SidebarProvider>
+      <div className="min-h-screen bg-background">
+        <DashboardSidebar />
+        <div className="transition-all duration-300 lg:pl-64">
+          {children}
+        </div>
       </div>
-    </div>
+    </SidebarProvider>
   )
 }
+

@@ -218,70 +218,72 @@ export default function BondsPage() {
             <CardTitle>All Bonds</CardTitle>
           </CardHeader>
           <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Bond Name</TableHead>
-                  <TableHead>Type</TableHead>
-                  <TableHead className="text-right">Yield</TableHead>
-                  <TableHead className="text-right">Min. Investment</TableHead>
-                  <TableHead>Rating</TableHead>
-                  <TableHead>Risk</TableHead>
-                  <TableHead className="text-right">Investors</TableHead>
-                  <TableHead className="text-right">Total Invested</TableHead>
-                  <TableHead></TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {filteredBonds.map((bond) => {
-                  const stats = getBondStats(bond.id);
-                  return (
-                    <TableRow key={bond.id} className="group">
-                      <TableCell>
-                        <div>
-                          <p className="font-medium text-foreground">{bond.name}</p>
-                          <p className="text-sm text-muted-foreground">{bond.issuer}</p>
-                        </div>
-                      </TableCell>
-                      <TableCell>
-                        <Badge variant="secondary" className={getTypeStyle(bond.type)}>
-                          {getTypeIcon(bond.type)}
-                          {bond.type}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="text-right">
-                        <span className="font-semibold text-success">{bond.yield}%</span>
-                      </TableCell>
-                      <TableCell className="text-right">
-                        {formatCurrency(bond.minInvestment)}
-                      </TableCell>
-                      <TableCell>
-                        <Badge variant="outline">{bond.rating}</Badge>
-                      </TableCell>
-                      <TableCell>
-                        <Badge variant="secondary" className={getRiskStyle(bond.riskLevel)}>
-                          {bond.riskLevel}
-                        </Badge>
-                      </TableCell>
-                      <TableCell className="text-right">
-                        <span className="font-medium">{stats.investorCount}</span>
-                      </TableCell>
-                      <TableCell className="text-right">
-                        <span className="font-medium">{formatCurrency(stats.totalInvested)}</span>
-                      </TableCell>
-                      <TableCell>
-                        <Link href={`/dashboard/bonds/${bond.id}`}>
-                          <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity">
-                            View Details
-                            <ChevronRight className="ml-1 h-4 w-4" />
-                          </Button>
-                        </Link>
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-            </Table>
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Bond Name</TableHead>
+                    <TableHead>Type</TableHead>
+                    <TableHead className="text-right">Yield</TableHead>
+                    <TableHead className="text-right">Min. Investment</TableHead>
+                    <TableHead>Rating</TableHead>
+                    <TableHead>Risk</TableHead>
+                    <TableHead className="text-right">Investors</TableHead>
+                    <TableHead className="text-right">Total Invested</TableHead>
+                    <TableHead></TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  {filteredBonds.map((bond) => {
+                    const stats = getBondStats(bond.id);
+                    return (
+                      <TableRow key={bond.id} className="group">
+                        <TableCell>
+                          <div>
+                            <p className="font-medium text-foreground">{bond.name}</p>
+                            <p className="text-sm text-muted-foreground">{bond.issuer}</p>
+                          </div>
+                        </TableCell>
+                        <TableCell>
+                          <Badge variant="secondary" className={getTypeStyle(bond.type)}>
+                            {getTypeIcon(bond.type)}
+                            {bond.type}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className="text-right">
+                          <span className="font-semibold text-success">{bond.yield}%</span>
+                        </TableCell>
+                        <TableCell className="text-right">
+                          {formatCurrency(bond.minInvestment)}
+                        </TableCell>
+                        <TableCell>
+                          <Badge variant="outline">{bond.rating}</Badge>
+                        </TableCell>
+                        <TableCell>
+                          <Badge variant="secondary" className={getRiskStyle(bond.riskLevel)}>
+                            {bond.riskLevel}
+                          </Badge>
+                        </TableCell>
+                        <TableCell className="text-right">
+                          <span className="font-medium">{stats.investorCount}</span>
+                        </TableCell>
+                        <TableCell className="text-right">
+                          <span className="font-medium">{formatCurrency(stats.totalInvested)}</span>
+                        </TableCell>
+                        <TableCell>
+                          <Link href={`/dashboard/bonds/${bond.id}`}>
+                            <Button variant="ghost" size="sm" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                              View Details
+                              <ChevronRight className="ml-1 h-4 w-4" />
+                            </Button>
+                          </Link>
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+              </Table>
+            </div>
           </CardContent>
         </Card>
       </main>

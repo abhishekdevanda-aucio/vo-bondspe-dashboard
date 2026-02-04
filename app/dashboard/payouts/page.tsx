@@ -115,44 +115,46 @@ export default function PayoutsPage() {
                 </div>
               </CardHeader>
               <CardContent>
-                <Table>
-                  <TableHeader>
-                    <TableRow>
-                      <TableHead>Payout ID</TableHead>
-                      <TableHead>Date</TableHead>
-                      <TableHead>Amount</TableHead>
-                      <TableHead>Status</TableHead>
-                      <TableHead className="w-[100px]">Invoice</TableHead>
-                    </TableRow>
-                  </TableHeader>
-                  <TableBody>
-                    {partnerEarnings.payoutHistory.map((payout) => (
-                      <TableRow key={payout.id}>
-                        <TableCell className="font-mono text-sm">
-                          {payout.id.toUpperCase()}
-                        </TableCell>
-                        <TableCell>{formatDate(payout.date)}</TableCell>
-                        <TableCell className="font-semibold">
-                          {formatCurrency(payout.amount)}
-                        </TableCell>
-                        <TableCell>
-                          <Badge
-                            variant="secondary"
-                            className="bg-success/10 text-success"
-                          >
-                            {payout.status.charAt(0).toUpperCase() +
-                              payout.status.slice(1)}
-                          </Badge>
-                        </TableCell>
-                        <TableCell>
-                          <Button variant="ghost" size="sm">
-                            <Download className="h-4 w-4" />
-                          </Button>
-                        </TableCell>
+                <div className="overflow-x-auto">
+                  <Table>
+                    <TableHeader>
+                      <TableRow>
+                        <TableHead>Payout ID</TableHead>
+                        <TableHead>Date</TableHead>
+                        <TableHead>Amount</TableHead>
+                        <TableHead>Status</TableHead>
+                        <TableHead className="w-[100px]">Invoice</TableHead>
                       </TableRow>
-                    ))}
-                  </TableBody>
-                </Table>
+                    </TableHeader>
+                    <TableBody>
+                      {partnerEarnings.payoutHistory.map((payout) => (
+                        <TableRow key={payout.id}>
+                          <TableCell className="font-mono text-sm">
+                            {payout.id.toUpperCase()}
+                          </TableCell>
+                          <TableCell>{formatDate(payout.date)}</TableCell>
+                          <TableCell className="font-semibold">
+                            {formatCurrency(payout.amount)}
+                          </TableCell>
+                          <TableCell>
+                            <Badge
+                              variant="secondary"
+                              className="bg-success/10 text-success"
+                            >
+                              {payout.status.charAt(0).toUpperCase() +
+                                payout.status.slice(1)}
+                            </Badge>
+                          </TableCell>
+                          <TableCell>
+                            <Button variant="ghost" size="sm">
+                              <Download className="h-4 w-4" />
+                            </Button>
+                          </TableCell>
+                        </TableRow>
+                      ))}
+                    </TableBody>
+                  </Table>
+                </div>
               </CardContent>
             </Card>
           </div>

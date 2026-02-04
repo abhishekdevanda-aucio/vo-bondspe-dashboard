@@ -185,103 +185,105 @@ export default function InvestorsPage() {
             </div>
           </CardHeader>
           <CardContent>
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead>Investor</TableHead>
-                  <TableHead>PAN</TableHead>
-                  <TableHead>KYC Status</TableHead>
-                  <TableHead>Total Invested</TableHead>
-                  <TableHead>Current Value</TableHead>
-                  <TableHead>Holdings</TableHead>
-                  <TableHead>Joined</TableHead>
-                  <TableHead>Last Activity</TableHead>
-                  <TableHead className="text-right">Actions</TableHead>
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                {filteredInvestors.map((investor) => (
-                  <TableRow key={investor.id}>
-                    <TableCell>
-                      <div className="flex items-center gap-3">
-                        <Avatar className="h-9 w-9">
-                          <AvatarFallback className="bg-primary/10 text-primary">
-                            {investor.name
-                              .split(" ")
-                              .map((n) => n[0])
-                              .join("")}
-                          </AvatarFallback>
-                        </Avatar>
-                        <div>
-                          <p className="font-medium">{investor.name}</p>
-                          <p className="text-sm text-muted-foreground">
-                            {investor.email}
-                          </p>
-                        </div>
-                      </div>
-                    </TableCell>
-                    <TableCell className="font-mono text-sm">
-                      {investor.pan}
-                    </TableCell>
-                    <TableCell>{getKycBadge(investor.kycStatus)}</TableCell>
-                    <TableCell className="font-medium">
-                      {investor.totalInvested > 0
-                        ? formatCurrency(investor.totalInvested)
-                        : "-"}
-                    </TableCell>
-                    <TableCell>
-                      {investor.currentValue > 0 ? (
-                        <div>
-                          <p className="font-medium">
-                            {formatCurrency(investor.currentValue)}
-                          </p>
-                          {investor.currentValue > investor.totalInvested && (
-                            <p className="text-xs text-success">
-                              +
-                              {formatCurrency(
-                                investor.currentValue - investor.totalInvested
-                              )}
-                            </p>
-                          )}
-                        </div>
-                      ) : (
-                        "-"
-                      )}
-                    </TableCell>
-                    <TableCell>
-                      {investor.activeHoldings > 0
-                        ? `${investor.activeHoldings} bonds`
-                        : "-"}
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">
-                      {formatDate(investor.joinDate)}
-                    </TableCell>
-                    <TableCell className="text-muted-foreground">
-                      {formatDate(investor.lastActivity)}
-                    </TableCell>
-                    <TableCell className="text-right">
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="icon">
-                            <MoreHorizontal className="h-4 w-4" />
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuItem>
-                            <Eye className="mr-2 h-4 w-4" />
-                            View Details
-                          </DropdownMenuItem>
-                          <DropdownMenuItem>
-                            <Mail className="mr-2 h-4 w-4" />
-                            Send Email
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </TableCell>
+            <div className="overflow-x-auto">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead>Investor</TableHead>
+                    <TableHead>PAN</TableHead>
+                    <TableHead>KYC Status</TableHead>
+                    <TableHead>Total Invested</TableHead>
+                    <TableHead>Current Value</TableHead>
+                    <TableHead>Holdings</TableHead>
+                    <TableHead>Joined</TableHead>
+                    <TableHead>Last Activity</TableHead>
+                    <TableHead className="text-right">Actions</TableHead>
                   </TableRow>
-                ))}
-              </TableBody>
-            </Table>
+                </TableHeader>
+                <TableBody>
+                  {filteredInvestors.map((investor) => (
+                    <TableRow key={investor.id}>
+                      <TableCell>
+                        <div className="flex items-center gap-3">
+                          <Avatar className="h-9 w-9">
+                            <AvatarFallback className="bg-primary/10 text-primary">
+                              {investor.name
+                                .split(" ")
+                                .map((n) => n[0])
+                                .join("")}
+                            </AvatarFallback>
+                          </Avatar>
+                          <div>
+                            <p className="font-medium">{investor.name}</p>
+                            <p className="text-sm text-muted-foreground">
+                              {investor.email}
+                            </p>
+                          </div>
+                        </div>
+                      </TableCell>
+                      <TableCell className="font-mono text-sm">
+                        {investor.pan}
+                      </TableCell>
+                      <TableCell>{getKycBadge(investor.kycStatus)}</TableCell>
+                      <TableCell className="font-medium">
+                        {investor.totalInvested > 0
+                          ? formatCurrency(investor.totalInvested)
+                          : "-"}
+                      </TableCell>
+                      <TableCell>
+                        {investor.currentValue > 0 ? (
+                          <div>
+                            <p className="font-medium">
+                              {formatCurrency(investor.currentValue)}
+                            </p>
+                            {investor.currentValue > investor.totalInvested && (
+                              <p className="text-xs text-success">
+                                +
+                                {formatCurrency(
+                                  investor.currentValue - investor.totalInvested
+                                )}
+                              </p>
+                            )}
+                          </div>
+                        ) : (
+                          "-"
+                        )}
+                      </TableCell>
+                      <TableCell>
+                        {investor.activeHoldings > 0
+                          ? `${investor.activeHoldings} bonds`
+                          : "-"}
+                      </TableCell>
+                      <TableCell className="text-muted-foreground">
+                        {formatDate(investor.joinDate)}
+                      </TableCell>
+                      <TableCell className="text-muted-foreground">
+                        {formatDate(investor.lastActivity)}
+                      </TableCell>
+                      <TableCell className="text-right">
+                        <DropdownMenu>
+                          <DropdownMenuTrigger asChild>
+                            <Button variant="ghost" size="icon">
+                              <MoreHorizontal className="h-4 w-4" />
+                            </Button>
+                          </DropdownMenuTrigger>
+                          <DropdownMenuContent align="end">
+                            <DropdownMenuItem>
+                              <Eye className="mr-2 h-4 w-4" />
+                              View Details
+                            </DropdownMenuItem>
+                            <DropdownMenuItem>
+                              <Mail className="mr-2 h-4 w-4" />
+                              Send Email
+                            </DropdownMenuItem>
+                          </DropdownMenuContent>
+                        </DropdownMenu>
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </div>
           </CardContent>
         </Card>
       </main>
