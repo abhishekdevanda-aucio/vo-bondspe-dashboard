@@ -28,7 +28,6 @@ const navigation = [
   { name: "Bond Catalog", href: "/dashboard/bonds", icon: Briefcase },
   { name: "Earnings", href: "/dashboard/payouts", icon: Wallet },
   { name: "Analytics", href: "/dashboard/analytics", icon: BarChart3 },
-  { name: "Features", href: "/dashboard/features", icon: ToggleLeft },
   { name: "Integrations", href: "/dashboard/integrations", icon: Code },
 ];
 
