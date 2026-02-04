@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { DashboardHeader } from "@/components/dashboard/header"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -7,7 +8,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Badge } from "@/components/ui/badge"
 import { Separator } from "@/components/ui/separator"
-import { Building2, Mail, Phone, MapPin, Globe, Shield, Users } from "lucide-react"
+import { Building2, Mail, Phone, MapPin, Globe, Shield, Users, Palette, ChevronRight } from "lucide-react"
 
 export default function SettingsPage() {
   return (
@@ -19,6 +20,24 @@ export default function SettingsPage() {
       <main className="flex-1 p-6">
         <div className="grid gap-6 lg:grid-cols-3">
           <div className="space-y-6 lg:col-span-2">
+            {/* Branding Link */}
+            <Link href="/dashboard/settings/branding">
+              <Card className="transition-colors hover:bg-accent/50 cursor-pointer mb-4">
+                <CardContent className="flex items-center justify-between p-4">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10">
+                      <Palette className="h-5 w-5 text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-medium text-foreground">Branding</p>
+                      <p className="text-sm text-muted-foreground">Customize your portal appearance</p>
+                    </div>
+                  </div>
+                  <ChevronRight className="h-5 w-5 text-muted-foreground" />
+                </CardContent>
+              </Card>
+            </Link>
+
             {/* Company Information */}
             <Card>
               <CardHeader>

@@ -6,12 +6,10 @@ import { cn } from "@/lib/utils";
 import { partnerData } from "@/lib/portal-config";
 import {
   LayoutDashboard,
-  Palette,
   Users,
   Briefcase,
   Wallet,
   BarChart3,
-  ToggleLeft,
   Code,
   Settings,
   Building2,
@@ -23,7 +21,6 @@ import { useState } from "react";
 
 const navigation = [
   { name: "Overview", href: "/dashboard", icon: LayoutDashboard },
-  { name: "Branding", href: "/dashboard/branding", icon: Palette },
   { name: "Investors", href: "/dashboard/investors", icon: Users },
   { name: "Bond Catalog", href: "/dashboard/bonds", icon: Briefcase },
   { name: "Earnings", href: "/dashboard/payouts", icon: Wallet },
@@ -50,7 +47,7 @@ export function DashboardSidebar() {
               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-sidebar-primary">
                 <Building2 className="h-5 w-5 text-sidebar-primary-foreground" />
               </div>
-              <span className="text-lg font-semibold">BondFlow</span>
+              <span className="text-lg font-semibold">Bondspe Partner</span>
             </Link>
           )}
           {collapsed && (
@@ -61,7 +58,7 @@ export function DashboardSidebar() {
         </div>
 
         {/* Partner Tier Badge */}
-        {!collapsed && (
+        {/* {!collapsed && (
           <div className="border-b border-sidebar-border px-4 py-3">
             <div className="flex items-center gap-2 rounded-lg bg-sidebar-accent/50 px-3 py-2">
               <BadgeCheck className="h-4 w-4 text-amber-400" />
@@ -70,7 +67,7 @@ export function DashboardSidebar() {
               </span>
             </div>
           </div>
-        )}
+        )} */}
 
         {/* Navigation */}
         <nav className="flex-1 space-y-1 px-2 py-4">
@@ -101,7 +98,7 @@ export function DashboardSidebar() {
             className={cn(
               "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-sidebar-muted transition-colors hover:bg-sidebar-accent/50 hover:text-sidebar-accent-foreground",
               pathname === "/dashboard/settings" &&
-                "bg-sidebar-accent text-sidebar-accent-foreground"
+              "bg-sidebar-accent text-sidebar-accent-foreground"
             )}
           >
             <Settings className="h-5 w-5 flex-shrink-0" />
